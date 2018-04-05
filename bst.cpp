@@ -29,7 +29,9 @@ Bst new_bst()
 }
 void delete_bst(Bst bst)
 {
-  if(bst == 0)return;
+  if (bst == 0) {
+    return;
+  }
   delete_bst(bst->right);
   delete_bst(bst->left);
   sfree(bst);
@@ -62,18 +64,16 @@ void add(Bst* bst, int value)
     copy_tree->left = 0;
     copy_tree->depth++;
     bst= &copy_tree;
-    return;
   }
   else if(value <= copy_tree->element) {
     if (copy_tree->left == 0) {
       Bst new_bst = (Node*)malloc(sizeof(struct Node));
       new_bst->element = value;
-      new_bst->left = 0;
       new_bst->right = 0;
+      new_bst->left = 0;
       copy_tree->left = new_bst;
       copy_tree->depth++;
       bst = &copy_tree;
-      return;
     }
     else
     {
@@ -89,7 +89,6 @@ void add(Bst* bst, int value)
       copy_tree->right = new_bst;
       copy_tree->depth++;
       bst = &copy_tree;
-      return;
     }
     else{
       add(&copy_tree->right, value);
@@ -157,17 +156,17 @@ bool are_equal(Bst bst1, Bst bst2)
   }
     int array_bst1[20];
     int array_bst2[20];
-    int length_bst1 = traverse_pre_order(bst1, array_bst1, 0 );
-    int length_bst2 = traverse_pre_order(bst2, array_bst2, 0 );
+    int length_bst1 = traverse_in_order(bst1, array_bst1, 0 );
+    int length_bst2 = traverse_in_order(bst2, array_bst2, 0 );
 
     if (length_bst1 == length_bst2 ) {
-      bool are_equal = true;
-      for (int i = 0; i < length_bst1; i++) {
+      for (int i = 0; i < length_bst1; i++)
+      {
         if (array_bst1[i] != array_bst2[i]) {
-          are_equal = false;
+          return false;
         }
       }
-      return are_equal;
+      return true;
     }
      return false;
 }
@@ -194,11 +193,11 @@ int get_number_of_subtrees(Bst bst)
 }
 
 
-Bst 	left_subtree (Bst root)
+Bst left_subtree (Bst root)
 {
   return root->left;
 }
-Bst 	right_subtree (Bst root)
+Bst right_subtree (Bst root)
 {
   return root->right;
 }
