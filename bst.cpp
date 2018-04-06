@@ -3,8 +3,8 @@
  *-----------------------------------------------------------------------------
  * Exercise Number: #exercise_number#
  * File:			bst.cpp
- * Author(s):		Peter Bauer
- * Due Date:		May 31, 2017
+ * Author(s):		Panturu Gloria Sara
+ * Due Date:		April 6, 2018
  *-----------------------------------------------------------------------------
  * Description:
  * <your description here>
@@ -12,7 +12,6 @@
 */
 #include "bst.h"
 #include <stdlib.h>
-#include <stdio.h>
 #include "general.h"
 
 struct Node{
@@ -51,7 +50,7 @@ int get_depth(Bst bst)
     if (depth_right > depth_left) {
         return depth_right;
       }
-      else return depth_left;
+    else return depth_left;
 }
 
 void add(Bst* bst, int value)
